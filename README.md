@@ -86,11 +86,11 @@ Encrypted command is composed of 3 parts:
 
 We need to get deeper into understanding these modes and possibly spot opportunity. 
 
-![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/master/OUT.png)
+![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/main/OUT.png)
 
 *Cipher block chaining (CBC)*
 
-![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/master/IN.png)
+![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/main/IN.png)
 
 *Counter (CTR)*
 
@@ -98,7 +98,7 @@ Looking these schemes there is interesting observation - we are able to get outp
 of whatever plaintext we want without knowing key (```SECRET```). So it is possible to change encrypted command to match whatever plaintext command we want. The problem remaining is how to match MAC that is generated with CBC encryption mode. Changing plaintext will generate new MAC, and there we can't do a lot except maybe in first block of CBC MAC generation - we have control over initialization vector (IV), and since we know that ```IN = plaintext XOR IV```, we know how to set IV for new plaintext to generate correct IN.
 Still MAC generation would not be correct, because we would have different plaintext in second block, so we need to restrict ourselves on changing plaintext in first block only. Do we have everything covered? No. Changing IV would change nonce that is used in CTR. But nonce is using only first 12 bytes of IV, so changing last 4 bytes of IV would be only acceptable option, which in turn means we are allowed to change only last 4 bytes of first block of plaintext. 
 
-![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/master/Slika1.png)
+![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/main/Slika1.png)
 
 *Position of bytes of failed command in ciphertext, with bytes susceptible to change in purple*
 
