@@ -86,11 +86,11 @@ Encrypted command is composed of 3 parts:
 
 We need to get deeper into understanding these modes and possibly spot opportunity. 
 
-![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/main/OUT.png)
+![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/main/IN.png)
 
 *Cipher block chaining (CBC)*
 
-![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/main/IN.png)
+![](https://github.com/markich88/BalCCon2k20_cryptsh/blob/main/OUT.png)
 
 *Counter (CTR)*
 
